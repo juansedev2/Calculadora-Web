@@ -10,6 +10,50 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+    <main>
+        <section id="titulo">
+            <h1>CALCULADORA WEB JDEV2</h1>
+        </section>
+        <section id="seccion_calculadora">
+            <section id="calculadora">
+                <section id="pantalla_resultado">
+                    <input type="text" id="pantalla" name="pantalla" placeholder="0" readonly>
+                </section>
+                <section id="botones">
+                    <section id="botones_principales">
+                        <section class="principales">
+                            <button name="clear" value="C">C</button>
+                            <button name="delete_one" value="←">←</button>
+                            <button name="operacion" value="/">/</button>
+                        </section>
+                    </section>
+                    <section class="botones_centrales">
+                        <button name="numero" value="7">7</button>
+                        <button name="numero" value="8">8</button>
+                        <button name="numero" value="9">9</button>
+                        <button name="operacion" value="*">*</button>
+                    </section>
+                    <section class="botones_centrales">
+                        <button name="numero" value="4">4</button>
+                        <button name="numero" value="5">5</button>
+                        <button name="numero" value="6">6</button>
+                        <button name="operacion" value="-">-</button>
+                    </section>
+                    <section class="botones_centrales">
+                        <button name="numero" value="1">1</button>
+                        <button name="numero" value="2">2</button>
+                        <button name="numero" value="3">3</button>
+                        <button name="operacion" value="+">+</button>
+                    </section>
+                    <section id="botones_finales">
+                        <button name="numero" value="0">0</button>
+                        <button name="operacion" value=".">.</button>
+                        <button name="operacion" value="=">=</button>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </main>
     <!--!Así es como se recomienda anexar los scripts, a través del atributo source y ubicar el elemento-->
     <script src="js/script.js"></script>
 </body>
