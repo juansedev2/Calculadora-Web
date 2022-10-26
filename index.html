@@ -11,50 +11,49 @@
 </head>
 <body>
     <main>
-        <section id="titulo">
-            <h1>CALCULADORA WEB JDEV2</h1>
-        </section>
-        <section id="seccion_calculadora">
-            <section id="calculadora">
-                <section id="pantalla_resultado">
-                    <input type="text" id="pantalla" name="pantalla" placeholder="0" readonly>
+        <section id="contenedor_principal">
+            <section id="titulo">
+                <h1>Calculadora JDEV2</h1>
+            </section>
+            <section id="contenedor_calculadora">
+                <section id="calculadora">
+                    <input type="text" id="pantalla" name="pantalla" readonly="true" required="true">
                 </section>
                 <section id="botones">
-                    <section id="botones_principales">
-                        <section class="principales">
-                            <button name="clear" value="C">C</button>
-                            <button name="delete_one" value="←">←</button>
-                            <button name="operacion" value="/">/</button>
+                    <section class="botones_principales">
+                        <button type="button" class="b_principal" value="c">C</button type="button">
+                        <button type="button" class="b_principal" value="←">←</button type="button">
+                        <button type="button" class="b_principal" value="/">/</button type="button">
+                    </section>
+                    <section class="botones_numeros_operaciones">
+                        <section class="fila_1">
+                            <button type="button" class="b_numero" value="7">7</button type="button">
+                            <button type="button" class="b_numero" value="8">8</button type="button">
+                            <button type="button" class="b_numero" value="9">9</button type="button">
+                            <button type="button" class="b_operacion" value="x">X</button type="button">
+                        </section>
+                        <section class="fila_2">
+                            <button type="button" class="b_numero" value="4">4</button type="button">
+                            <button type="button" class="b_numero" value="5">5</button type="button">
+                            <button type="button" class="b_numero" value="6">6</button type="button">
+                            <button type="button" class="b_operacion" value="-">-</button type="button">
+                        </section>
+                        <section class="fila_3">
+                            <button type="button" class="b_numero" value="1">1</button type="button">
+                            <button type="button" class="b_numero" value="2">2</button type="button">
+                            <button type="button" class="b_numero" value="3">3</button type="button">
+                            <button type="button" class="b_operacion" value="+">+</button type="button">
                         </section>
                     </section>
-                    <section class="botones_centrales">
-                        <button name="numero" value="7">7</button>
-                        <button name="numero" value="8">8</button>
-                        <button name="numero" value="9">9</button>
-                        <button name="operacion" value="*">*</button>
-                    </section>
-                    <section class="botones_centrales">
-                        <button name="numero" value="4">4</button>
-                        <button name="numero" value="5">5</button>
-                        <button name="numero" value="6">6</button>
-                        <button name="operacion" value="-">-</button>
-                    </section>
-                    <section class="botones_centrales">
-                        <button name="numero" value="1">1</button>
-                        <button name="numero" value="2">2</button>
-                        <button name="numero" value="3">3</button>
-                        <button name="operacion" value="+">+</button>
-                    </section>
-                    <section id="botones_finales">
-                        <button name="numero" value="0">0</button>
-                        <button name="operacion" value=".">.</button>
-                        <button name="operacion" value="=">=</button>
+                    <section class="botones_finales">
+                        <button type="button" class="b_numero_cero" value="0">0</button type="button">
+                        <button type="button" class="b_decimal" value=".">.</button type="button">
+                        <button type="button" class="b_igual" value="=">=</button type="button">
                     </section>
                 </section>
             </section>
         </section>
     </main>
-    <!--!Así es como se recomienda anexar los scripts, a través del atributo source y ubicar el elemento-->
     <script src="js/script.js"></script>
 </body>
 </html>
