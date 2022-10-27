@@ -17,13 +17,13 @@
             </section>
             <section id="contenedor_calculadora">
                 <section id="calculadora">
-                    <input type="text" id="pantalla" name="pantalla" readonly="true" required="true">
+                    <input type="text" id="pantalla" name="pantalla" readonly="true" required="true" value="0">
                 </section>
                 <section id="botones">
                     <section class="botones_principales">
                         <button type="button" class="b_principal" value="c">C</button type="button">
                         <button type="button" class="b_principal" value="←">←</button type="button">
-                        <button type="button" class="b_principal" value="/">/</button type="button">
+                        <button type="button" class="b_operacion" value="/">/</button type="button">
                     </section>
                     <section class="botones_numeros_operaciones">
                         <section class="fila_1">
@@ -46,9 +46,9 @@
                         </section>
                     </section>
                     <section class="botones_finales">
-                        <button type="button" class="b_numero_cero" value="0">0</button type="button">
-                        <button type="button" class="b_decimal" value=".">.</button type="button">
-                        <button type="button" class="b_igual" value="=">=</button type="button">
+                        <button type="button" class="b_numero" value="0">0</button type="button">
+                        <button type="button" class="b_principal" value=".">.</button type="button">
+                        <button type="button" class="b_principal" id="igual" value="=">=</button type="button">
                     </section>
                 </section>
             </section>
