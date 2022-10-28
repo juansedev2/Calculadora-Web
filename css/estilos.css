@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    height: auto;
+    min-height: 100%; /**Ancho mínimo del fondo debe ser del 100%*/
+}
+:root{
+    --gradiente-azul-claro: #43C6AC;
+    --gradiente-azul-claro-2: #339e89;
+    --gradiente-azul-claro-3: #27ba9d;
+    --gradiente-azul-oscuro: #191654;
+    --color-negro: rgb(11, 11, 11);
+    --color-negrotran:rgba(0, 0, 0, 0.047);
+    --color-blanco: rgb(255, 255, 255);
+    --color-gris-tran: rgba(100, 100, 100, 0.219);
+}
+body{
+    background: linear-gradient(to right,var(--gradiente-azul-claro), var(--gradiente-azul-oscuro));
+}
+header{
+    width: 100%;
+    height: auto;
+    background-color: var(--color-negro);
+    padding: 3%;
+}
+section#titulo h1{
+    text-align: center;
+    color: white;
+    font-size: 2.1rem;
+}
+main{
+    width: auto;
+    height: auto;
+    margin: 8% 0;
+}
+section#contenedor_principal{
+    width: 450px;
+    margin: auto;
+    border: 2px solid var(--gradiente-azul-claro-2);
+    border-radius: 20px;
+    background-color: var(--gradiente-azul-claro-3);
+}
+section#contenedor_calculadora{
+    padding: 40px;
+    width: 100%;
+    height: auto;
+}
+section#calculadora{
+    width: auto;
+    height: auto;
+}
+section#calculadora input{
+    width: 365px;
+    height: 80px;
+    letter-spacing: 1.2px;
+    padding: 10px;
+    text-align: right;
+    color: var(--color-blanco);
+    background-color: var(--color-negrotran);
+    border: 2px solid var(--color-gris-tran);
+    border-radius: 10px;
+    font-size: 2.3rem;
+    display: inline-flex;
+    margin: auto;
+}
+section#botones{
+    /**Probemos display grid a ver que tal*/
+    display: grid;
+    /**Definir los espacios para las columnas y sus hijos (como un padding)*/
+    grid-template-columns: 100px 100px 100px;
+    /**Por cada fila que haya, asignar un espacio a cada uno (como un padding)*/
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
+    /**Alienación de los elementos por defecto*/
+    justify-items: stretch;
+    justify-content: center;
+    /**Espacio entre los elementos del contenedor*/
+    grid-gap: 20px;
+    margin: 30px 0;
+}
+section#botones button{
+    font-size: 1.3rem;
+}
