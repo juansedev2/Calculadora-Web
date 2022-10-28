@@ -44,13 +44,28 @@ botones_principales.forEach((elemento) => {
 
         case "=":
             if(typeof valor_pantalla == "string"){
-                valor_reciente = parseInt(valor_pantalla);
+
+                console.log("Valor de pantalla: " + valor_pantalla)
+                
+                if(valor_pantalla.includes(".")){  // * Encontrar si es un número decimal y hacer la conversión
+                    valor_reciente = parseFloat(valor_pantalla);
+                }else{
+                    valor_reciente = parseInt(valor_pantalla);
+                }
                 operarNumeros(valor_reciente, valor_actual, valor_operacion);
                 igual = true;
+                
                 if(valor_actual == 0){
                     valor_pantalla = null;
                     pantalla.value = "0";
                 }
+            }
+            break;
+
+        case ".":
+            if(typeof valor_pantalla == "string"){
+                valor_pantalla = valor_pantalla + ".";
+                pantalla.value = valor_pantalla;
             }
             break;
 
@@ -82,13 +97,22 @@ botones_operaciones.forEach((elemento) => {
     if (typeof valor_pantalla == "string") {  // * Solo obtener la operación a realizar si hay valores a operar
 
         if(valor_actual == 0){ 
-            // * Almacenar el primer número que se guarda en memoria
-            valor_actual = parseInt(valor_pantalla);
+            
+            if(valor_pantalla.includes(".")){  // * Encontrar si es un número decimal y hacer la conversión
+                valor_actual  = parseFloat(valor_pantalla);
+            }else{
+                console.log("No hay decimal");
+                valor_actual  = parseInt(valor_pantalla);
+            }
 
         }else{
             if(!igual){
                 // * Almacenar el valor actual obteniendo la operación a realizar sobre ella (anterior operado con el actual)
-                valor_reciente = parseInt(valor_pantalla);
+                if(valor_pantalla.includes(".")){  // * Encontrar si es un número decimal y hacer la conversión
+                    valor_reciente = parseFloat(valor_pantalla);
+                }else{
+                    valor_reciente = parseInt(valor_pantalla);
+                }
                 operarNumeros(valor_reciente, valor_actual, valor_operacion);
             }
             igual = false;
