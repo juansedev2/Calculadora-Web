@@ -11,9 +11,12 @@ html{
     --gradiente-azul-claro: #43C6AC;
     --gradiente-azul-claro-2: #339e89;
     --gradiente-azul-claro-3: #27ba9d;
+    --gradiente-azul-claro-4: #22a389;
     --gradiente-azul-oscuro: #191654;
     --color-negro: rgb(11, 11, 11);
+    --color-gris: rgb(38, 38, 38);
     --color-negrotran:rgba(0, 0, 0, 0.047);
+    --color-negrotran2: rgba(0, 0, 0, 0.333);
     --color-blanco: rgb(255, 255, 255);
     --color-gris-tran: rgba(100, 100, 100, 0.219);
 }
@@ -59,7 +62,7 @@ section#calculadora input{
     padding: 10px;
     text-align: right;
     color: var(--color-blanco);
-    background-color: var(--color-negrotran);
+    background-color: var(--color-gris);
     border: 2px solid var(--color-gris-tran);
     border-radius: 10px;
     font-size: 2.3rem;
@@ -72,7 +75,7 @@ section#botones{
     /**Definir los espacios para las columnas y sus hijos (como un padding)*/
     grid-template-columns: 100px 100px 100px;
     /**Por cada fila que haya, asignar un espacio a cada uno (como un padding)*/
-    grid-template-rows: 50px 50px 50px 50px 50px 50px;
+    grid-template-rows: 60px 60px 60px 60px 60px 60px;
     /**Alienación de los elementos por defecto*/
     justify-items: stretch;
     justify-content: center;
@@ -82,4 +85,11 @@ section#botones{
 }
 section#botones button{
     font-size: 1.3rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 3px var(--color-negrotran2);
+}
+section#botones button:hover{
+    background-color: var(--gradiente-azul-claro-4);
 }
