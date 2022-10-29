@@ -68,7 +68,7 @@ botones_principales.forEach((elemento) => {
             break;
 
         default:
-            console.log(`Operación desconocida`);
+            //console.log(`Operación desconocida`);
             break;
     }
   });
@@ -87,7 +87,6 @@ botones_numeros.forEach((elemento) => {
         valor_pantalla = numero.target.value;
     }
     pantalla.value = valor_pantalla;
-    console.log("El valor de valor pantalla: " + valor_pantalla);
   });
 });
 
@@ -104,7 +103,6 @@ botones_operaciones.forEach((elemento) => {
 
 function operarNumeros() {
 
-    console.log("Valor de valor pantalla: " + valor_pantalla);
     valor_actual = parsearNumero(valor_pantalla);
 
     switch (valor_operacion) {
@@ -123,7 +121,7 @@ function operarNumeros() {
             valor_almacenado = valor_almacenado / valor_actual;
             break;
         default:
-            console.log(`Operación desconocida`);
+            //console.log(`Operación desconocida`);
             break;
     }
     pantalla.value = String(valor_almacenado);
