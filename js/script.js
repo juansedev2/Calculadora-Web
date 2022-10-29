@@ -23,6 +23,7 @@ botones_principales.forEach((elemento) => {
 
         case "c":
             valor_actual = 0;
+            valor_reciente = 0;
             valor_pantalla = null;
             pantalla.value = "0";
             break;
@@ -56,6 +57,7 @@ botones_principales.forEach((elemento) => {
                 igual = true;
                 
                 if(valor_actual == 0){
+                    valor_reciente = 0;
                     valor_pantalla = null;
                     pantalla.value = "0";
                 }
@@ -101,7 +103,6 @@ botones_operaciones.forEach((elemento) => {
             if(valor_pantalla.includes(".")){  // * Encontrar si es un número decimal y hacer la conversión
                 valor_actual  = parseFloat(valor_pantalla);
             }else{
-                console.log("No hay decimal");
                 valor_actual  = parseInt(valor_pantalla);
             }
 
@@ -125,7 +126,6 @@ botones_operaciones.forEach((elemento) => {
 
 function operarNumeros(reciente, actual, operacion) {
     
-    console.log(`Calcular los números ${reciente} y ${actual} para hacer: ${operacion}`);
     parseInt(actual);
     
     switch (operacion) {
