@@ -34,6 +34,7 @@ botones_principales.forEach((elemento) => {
                 
                 if(valor_pantalla.length <= 1){
                     valor_pantalla = null;
+                    valor_reciente = 0;
                     pantalla.value = "0";
                 }else{
                     valor_pantalla = valor_pantalla.slice(-1);  //* Eliminar el último caracter de la cadena
@@ -44,9 +45,8 @@ botones_principales.forEach((elemento) => {
             break;
 
         case "=":
-            if(typeof valor_pantalla == "string"){
 
-                console.log("Valor de pantalla: " + valor_pantalla)
+            if(typeof valor_pantalla == "string"){
                 
                 if(valor_pantalla.includes(".")){  // * Encontrar si es un número decimal y hacer la conversión
                     valor_reciente = parseFloat(valor_pantalla);
@@ -55,11 +55,11 @@ botones_principales.forEach((elemento) => {
                 }
                 operarNumeros(valor_reciente, valor_actual, valor_operacion);
                 igual = true;
+
                 
-                if(valor_actual == 0){
+                if(valor_actual > 0){
                     valor_reciente = 0;
                     valor_pantalla = null;
-                    pantalla.value = "0";
                 }
                 valor_actual = 0;
                 valor_reciente = 0;
@@ -160,4 +160,7 @@ function operarNumeros(reciente, actual, operacion) {
     }
 
     pantalla.value = String(valor_actual);
+    valor_actual = 0;
+    valor_reciente = 0;
+    valor_operacion = null;
 }
