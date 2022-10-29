@@ -10,8 +10,7 @@ const botones_operaciones = document.querySelectorAll("button.b_operacion");
 const pantalla = document.getElementById("pantalla");
 // * Variables para los valores de las operaciones aritméticas en memoria
 let valor_pantalla = null, valor_operacion = null;
-let valor_actual = 0, valor_reciente = 0;
-let igual = false;  // * Controlar que los resultados puedan concaternarse bien sea con = o una operación aritmética
+let valor_almacenado = 0, valor_actual = 0;
 
 // ! Añadir el evento de capturar los botones de las operaciones principales
 botones_principales.forEach((elemento) => {
@@ -23,21 +22,20 @@ botones_principales.forEach((elemento) => {
 
         case "c":
             valor_actual = 0;
-            valor_reciente = 0;
+            valor_almacenado = 0;
             valor_pantalla = null;
             pantalla.value = "0";
             break;
 
         case "←":
-            
             if(typeof valor_pantalla == "string"){
-                
-                if(valor_pantalla.length <= 1){
-                    valor_pantalla = null;
-                    valor_reciente = 0;
+                if(valor_pantalla.length == 1){
                     pantalla.value = "0";
                 }else{
-                    valor_pantalla = valor_pantalla.slice(-1);  //* Eliminar el último caracter de la cadena
+                    console.log("Valor de valor pantalla: " + valor_pantalla);
+                    //!Primer valor desde donde empieza a borrar y el último hasta donde
+                    valor_pantalla = valor_pantalla.slice(0, -1);
+                    console.log("Valor de valor pantalla: " + valor_pantalla);
                     pantalla.value = valor_pantalla;
                 }
             }
@@ -45,25 +43,8 @@ botones_principales.forEach((elemento) => {
             break;
 
         case "=":
-
             if(typeof valor_pantalla == "string"){
-                
-                if(valor_pantalla.includes(".")){  // * Encontrar si es un número decimal y hacer la conversión
-                    valor_reciente = parseFloat(valor_pantalla);
-                }else{
-                    valor_reciente = parseInt(valor_pantalla);
-                }
-                operarNumeros(valor_reciente, valor_actual, valor_operacion);
-                igual = true;
-
-                
-                if(valor_actual > 0){
-                    valor_reciente = 0;
-                    valor_pantalla = null;
-                }
-                valor_actual = 0;
-                valor_reciente = 0;
-                valor_pantalla = null;
+                operarNumeros();
             }
             break;
 
@@ -83,84 +64,70 @@ botones_principales.forEach((elemento) => {
 
 // ! Añadir el evento de capturar los botones de los números
 botones_numeros.forEach((elemento) => {
-  elemento.addEventListener("click", (numero) => {
-
-    if (valor_pantalla == null) {
-      valor_pantalla = numero.target.value;
-    } else {
-      valor_pantalla += numero.target.value;
+  elemento.addEventListener("click", numero => {
+    if(typeof valor_pantalla == "string"){
+        if(valor_pantalla.length == 0){
+            valor_pantalla = numero.target.value;
+        }else{
+            valor_pantalla += numero.target.value;
+        }
+    }else{
+        valor_pantalla = numero.target.value;
     }
     pantalla.value = valor_pantalla;
+    console.log("El valor de valor pantalla: " + valor_pantalla);
   });
 });
 
 // ! Añadir el evento de capturar los botones de las operaciones aritméticas
 botones_operaciones.forEach((elemento) => {
-  elemento.addEventListener("click", (operacion_aritmetica) => {
-
-    
-    if (typeof valor_pantalla == "string") {  // * Solo obtener la operación a realizar si hay valores a operar
-
-        if(valor_actual == 0){ 
-            
-            if(valor_pantalla.includes(".")){  // * Encontrar si es un número decimal y hacer la conversión
-                valor_actual  = parseFloat(valor_pantalla);
-            }else{
-                valor_actual  = parseInt(valor_pantalla);
-            }
-
-        }else{
-            if(!igual){
-                // * Almacenar el valor actual obteniendo la operación a realizar sobre ella (anterior operado con el actual)
-                if(valor_pantalla.includes(".")){  // * Encontrar si es un número decimal y hacer la conversión
-                    valor_reciente = parseFloat(valor_pantalla);
-                }else{
-                    valor_reciente = parseInt(valor_pantalla);
-                }
-                operarNumeros(valor_reciente, valor_actual, valor_operacion);
-            }
-            igual = false;
-        }
-        valor_operacion = operacion_aritmetica.target.value;
-        valor_pantalla = null;  //  * No permitir que se hagan op
+  elemento.addEventListener("click", operacion_aritmetica => {
+    valor_operacion = operacion_aritmetica.target.value;
+    if(valor_almacenado == 0){
+        valor_almacenado = parsearNumero(valor_pantalla);
     }
+    valor_pantalla = null;
   });
 });
 
-function operarNumeros(reciente, actual, operacion) {
-    
-    parseInt(actual);
-    
-    switch (operacion) {
-        
+function operarNumeros() {
+
+    console.log("Valor de valor pantalla: " + valor_pantalla);
+    valor_actual = parsearNumero(valor_pantalla);
+
+    switch (valor_operacion) {
         case "+":
-            valor_actual = actual + reciente;
+            valor_almacenado = valor_almacenado + valor_actual;
             break;
-
+    
         case "-":
-            valor_actual = actual - reciente;
+            valor_almacenado = valor_almacenado - valor_actual;
             break;
-
+        
         case "x":
-            valor_actual = actual * reciente;
+            valor_almacenado = valor_almacenado * valor_actual;
             break;
-
         case "/":
-
-            if(reciente == 0){
-                valor_actual = 0;
-            }else{
-                valor_actual = actual / reciente;
-            }
+            valor_almacenado = valor_almacenado / valor_actual;
             break;
-
         default:
             console.log(`Operación desconocida`);
             break;
     }
+    pantalla.value = String(valor_almacenado);
+    valor_pantalla = null;
+}
 
-    pantalla.value = String(valor_actual);
-    valor_actual = 0;
-    valor_reciente = 0;
-    valor_operacion = null;
+function parsearNumero(valor) {
+
+    if(typeof valor == "string"){
+        if(valor.includes(".")){
+            if(valor.endsWith(".")){
+                valor += "0";
+            }
+            return parseFloat(valor);
+        }else{
+            return parseInt(valor);
+        }
+    }
 }
