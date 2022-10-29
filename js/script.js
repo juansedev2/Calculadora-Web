@@ -61,6 +61,9 @@ botones_principales.forEach((elemento) => {
                     valor_pantalla = null;
                     pantalla.value = "0";
                 }
+                valor_actual = 0;
+                valor_reciente = 0;
+                valor_pantalla = null;
             }
             break;
 
