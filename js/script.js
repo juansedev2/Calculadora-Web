@@ -33,12 +33,23 @@ botones_principales.forEach((elemento) => {
 
                     if(valor_pantalla.length == 1){
                         pantalla.value = "0";
+                        valor_pantalla = null;
                     }else{
                         //!Primer valor desde donde empieza a borrar y el último hasta donde
                         valor_pantalla = valor_pantalla.slice(0, -1);
                         pantalla.value = valor_pantalla;
                     }
                 }
+            }else{
+                if(valor_pantalla.length == 1){
+                        pantalla.value = "0";
+                        valor_pantalla = null;
+                    }else{
+                        //!Primer valor desde donde empieza a borrar y el último hasta donde
+                        valor_pantalla = valor_pantalla.slice(0, -1);
+                        pantalla.value = valor_pantalla;
+                    }
+
             }
 
             break;
