@@ -28,15 +28,16 @@ botones_principales.forEach((elemento) => {
             break;
 
         case "←":
-            if(typeof valor_pantalla == "string"){
-                if(valor_pantalla.length == 1){
-                    pantalla.value = "0";
-                }else{
-                    console.log("Valor de valor pantalla: " + valor_pantalla);
-                    //!Primer valor desde donde empieza a borrar y el último hasta donde
-                    valor_pantalla = valor_pantalla.slice(0, -1);
-                    console.log("Valor de valor pantalla: " + valor_pantalla);
-                    pantalla.value = valor_pantalla;
+            if(valor_operacion === null){
+                if(typeof valor_pantalla == "string"){
+
+                    if(valor_pantalla.length == 1){
+                        pantalla.value = "0";
+                    }else{
+                        //!Primer valor desde donde empieza a borrar y el último hasta donde
+                        valor_pantalla = valor_pantalla.slice(0, -1);
+                        pantalla.value = valor_pantalla;
+                    }
                 }
             }
 
@@ -115,6 +116,7 @@ function operarNumeros() {
             break;
     }
     pantalla.value = String(valor_almacenado);
+    valor_operacion = null;
     valor_pantalla = null;
 }
 
