@@ -1,18 +1,11 @@
-// ! Script de JavaScript que contendrá la lógica de la aplicación de la calculadora
 "use strict";
-// ! Obtener los botones de las operaciones de la sección principal (Clear (c), remove(←), decimal(.) e igual(=))
 const botones_principales = document.querySelectorAll("button.b_principal");
-// ! Obtener los botones de los números)
 const botones_numeros = document.querySelectorAll("button.b_numero");
-// ! Obtener los botones de las operaciones aritméticas (+, -, * y /))
 const botones_operaciones = document.querySelectorAll("button.b_operacion");
-// ! Obtener el input que actuará como pantalla de la calculadora
 const pantalla = document.getElementById("pantalla");
-// * Variables para los valores de las operaciones aritméticas en memoria
 let valor_pantalla = null, valor_operacion = null;
 let valor_almacenado = 0, valor_actual = 0;
 
-// ! Añadir el evento de capturar los botones de las operaciones principales
 botones_principales.forEach((elemento) => {
   elemento.addEventListener("click", (operacion_principal) => {
     
@@ -35,7 +28,6 @@ botones_principales.forEach((elemento) => {
                         pantalla.value = "0";
                         valor_pantalla = null;
                     }else{
-                        //!Primer valor desde donde empieza a borrar y el último hasta donde
                         valor_pantalla = valor_pantalla.slice(0, -1);
                         pantalla.value = valor_pantalla;
                     }
@@ -45,7 +37,6 @@ botones_principales.forEach((elemento) => {
                         pantalla.value = "0";
                         valor_pantalla = null;
                     }else{
-                        //!Primer valor desde donde empieza a borrar y el último hasta donde
                         valor_pantalla = valor_pantalla.slice(0, -1);
                         pantalla.value = valor_pantalla;
                     }
@@ -74,7 +65,6 @@ botones_principales.forEach((elemento) => {
   });
 });
 
-// ! Añadir el evento de capturar los botones de los números
 botones_numeros.forEach((elemento) => {
   elemento.addEventListener("click", numero => {
     if(typeof valor_pantalla == "string"){
@@ -90,7 +80,6 @@ botones_numeros.forEach((elemento) => {
   });
 });
 
-// ! Añadir el evento de capturar los botones de las operaciones aritméticas
 botones_operaciones.forEach((elemento) => {
   elemento.addEventListener("click", operacion_aritmetica => {
     valor_operacion = operacion_aritmetica.target.value;
