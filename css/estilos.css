@@ -27,7 +27,7 @@ header{
     width: 100%;
     height: auto;
     background-color: var(--color-negro);
-    padding: 3%;
+    padding: 5%;
 }
 section#titulo h1{
     text-align: center;
@@ -92,4 +92,45 @@ section#botones button{
 }
 section#botones button:hover{
     background-color: var(--gradiente-azul-claro-4);
+}
+@media (max-width: 470px) {
+    section#contenedor_principal{
+        width: 400px;
+    }
+    section#contenedor_calculadora{
+        padding: 30px;
+    }
+    section#calculadora input{
+        width: 340px;
+        height: 80px;
+        letter-spacing: 1.1px;
+        padding: 10px;
+        font-size: 2.2rem;
+    }
+    section#botones button{
+        font-size: 1.2rem;
+    }
+    
+}
+@media (max-width: 393px) {
+    section#contenedor_principal{
+        width: 330px;
+    }
+    section#contenedor_calculadora{
+        padding: 20px;
+    }
+    section#calculadora input{
+        width: 285px;
+        height: 80px;
+        letter-spacing: 1px;
+        padding: 9px;
+        font-size: 2rem;
+    }
+    section#botones button{
+        font-size: 1.1rem;
+    }
+    section#botones{
+        grid-template-columns: 80px 80px 80px;
+    }
+    
 }
