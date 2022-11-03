@@ -107,7 +107,7 @@ section#botones button:hover{
     }
     
 }
-@media (max-width: 393px) {
+@media (max-width: 398px) {
     section#contenedor_principal{
         width: 330px;
     }
